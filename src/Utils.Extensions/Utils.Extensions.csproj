@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{DD94A458-1513-464B-928D-200FF28953C5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Utils.Extensions</RootNamespace>
+    <AssemblyName>Utils.Extensions</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\CoapServizi\</SolutionDir>
+    <AssemblyVersion>2.3.11.36</AssemblyVersion>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\Utils.Extensions.xml</DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\Utils.Extensions.xml</DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Deploy|AnyCPU'">
+    <OutputPath>bin\Deploy\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <DocumentationFile>bin\Release\Utils.Extensions.xml</DocumentationFile>
+    <Optimize>true</Optimize>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Basic\BytesExtensions.cs" />
+    <Compile Include="Basic\StringExtensions.cs" />
+    <Compile Include="Collections\CollectionsExtension.cs" />
+    <Compile Include="Collections\IQueryablesExtension.cs" />
+    <Compile Include="Collections\PredicateType.cs" />
+    <Compile Include="Compare\GenericCompare.cs" />
+    <Compile Include="Data\DataColumnExtensions.cs" />
+    <Compile Include="Data\DataRowExtensions.cs" />
+    <Compile Include="Data\DataSetExtensions.cs" />
+    <Compile Include="Data\DataTableCollectionExtensions.cs" />
+    <Compile Include="Data\DataTableExtensions.cs" />
+    <Compile Include="Memoization\MemoizationExtensions.cs" />
+    <Compile Include="Xml\Bags\IXmlBag.cs" />
+    <Compile Include="Xml\Bags\NavigationStrategy.cs" />
+    <Compile Include="Data\SqlParameterExtensions.cs" />
+    <Compile Include="Data\SqlTypes\SqlDateTimeExtensions.cs" />
+    <Compile Include="Data\TableInfo.cs" />
+    <Compile Include="Xml\Bags\SearchElement.cs" />
+    <Compile Include="Xml\Bags\XElementBag.cs" />
+    <Compile Include="Xml\Bags\XmlValidator.cs" />
+    <Compile Include="Xml\XmlValidatorExtensions.cs" />
+    <Compile Include="Xml\XsdValidationException.cs" />
+    <Compile Include="Xml\XsdValidationInfo.cs" />
+    <Compile Include="Xml\XElementExtensions.cs" />
+    <Compile Include="Xml\Bags\XmlBag.cs" />
+    <Compile Include="Xml\Bags\XmlBagFactory.cs" />
+    <Compile Include="Xml\Bags\XPathNavigatorBag.cs" />
+    <Compile Include="Xml\XPathNavigatorExtensions.cs" />
+    <Compile Include="Enums\EnumExtensions.cs" />
+    <Compile Include="Reflection\ObjectExtensions.cs" />
+    <Compile Include="Reflection\TypeExtensions.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceModel\ExtensionsToMessage.cs" />
+    <Compile Include="Xml\XObjectsExtensions.cs" />
+    <Compile Include="Xml\XPathExtensions.cs" />
+    <Compile Include="Xml\XsdValidationResult.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Utils.Extensions.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,6 @@
+src/.vs/
+bin/
+obj/
+node_modules/
+packages/
+src/Cimplicity.Views.WebClient/wwwroot/lib/

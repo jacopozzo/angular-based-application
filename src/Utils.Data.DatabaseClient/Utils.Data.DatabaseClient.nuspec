@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <metadata>
+    <id>Utils.Data.DatabaseClient</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <description>$description$</description>
+    <language />
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <developmentDependency>false</developmentDependency>
+    <releaseNotes>Generalizzazione dei parametri per utilizzare sia oracle che sql nell'astrazione</releaseNotes>
+    <copyright>Copyright ©</copyright>
+    <frameworkAssemblies />
+    
+  </metadata>
+  <files>
+    <file src="Utils.Data.DatabaseClient\bin\$configuration$\Utils.Data.DatabaseClient.dll" target="lib\net40" />
+    <file src="Utils.Data.DatabaseClient\bin\$configuration$\Utils.Data.DatabaseClient.pdb" target="lib\net40" />
+    <file src="Utils.Data.DatabaseClient\bin\$configuration$\Utils.Data.DatabaseClient.xml" target="lib\net40" />
+  </files>
+</package>
