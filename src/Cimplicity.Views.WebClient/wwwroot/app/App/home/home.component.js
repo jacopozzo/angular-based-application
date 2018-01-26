@@ -10,31 +10,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const core_1 = require("@angular/core");
-let AppComponent = class AppComponent {
+let HomeComponent = class HomeComponent {
     constructor() {
-        console.log('AppComponent -> constructor');
+        console.log('HomeComponent -> constructor');
     }
     ngOnInit() {
-        console.log('AppComponent -> ngOnInit');
+        console.log('HomeComponent -> ngOnInit');
     }
 };
-AppComponent = __decorate([
+HomeComponent = __decorate([
     core_1.Component({
-        selector: 'my-app',
+        selector: 'home',
         template: `
-        <div class="container">
-            <h1>Angular 2 & TypeScript web application</h1>
-            <h2>Mad  e with ASP.NET Core and Visual Studio 2017</h2>
-            <nav>
-                <a routerLink="home" routerLinkActive="active">Home</a>
-                <a routerLink="about">About</a>
-            </nav>
-            <router-outlet></router-outlet>
-        </div>
-    `,
-        providers: []
+        <h1>Home</h1>
+        <p>Hello you !</p>
+    `
     }),
     __metadata("design:paramtypes", [])
-], AppComponent);
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+], HomeComponent);
+exports.HomeComponent = HomeComponent;
+//# sourceMappingURL=home.component.js.map

@@ -5,16 +5,20 @@
     <TypeScriptToolsVersion>2.5</TypeScriptToolsVersion>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+
   <ItemGroup>
-    <None Remove="App\about\about.component.ts" />
-    <None Remove="App\app-routing.module.ts" />
-    <None Remove="App\app.component.ts" />
-    <None Remove="App\app.module.ts" />
-    <None Remove="App\home\home.component.ts" />
+    <Content Remove="wwwroot\app\about\about.html" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\img\" />
+    <None Remove="polyfills.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\app\about\about.html" />
   </ItemGroup>
 
   <ItemGroup>
@@ -31,11 +35,25 @@
   </ItemGroup>
 
   <ItemGroup>
-    <TypeScriptCompile Include="App\about\about.component.ts" />
-    <TypeScriptCompile Include="App\app-routing.module.ts" />
-    <TypeScriptCompile Include="App\app.component.ts" />
-    <TypeScriptCompile Include="App\app.module.ts" />
-    <TypeScriptCompile Include="App\home\home.component.ts" />
+    <TypeScriptCompile Include="App\polyfills.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="App\about\about.component.ts">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="App\app-routing.module.ts">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="App\app.component.ts">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="App\app.module.ts">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="App\home\home.component.ts">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
