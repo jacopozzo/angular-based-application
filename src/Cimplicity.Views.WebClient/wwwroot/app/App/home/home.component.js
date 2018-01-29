@@ -9,24 +9,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const core_1 = require("@angular/core");
-let HomeComponent = class HomeComponent {
-    constructor() {
+var core_1 = require("@angular/core");
+var HomeComponent = (function () {
+    function HomeComponent() {
         console.log('HomeComponent -> constructor');
     }
-    ngOnInit() {
+    HomeComponent.prototype.ngOnInit = function () {
         console.log('HomeComponent -> ngOnInit');
-    }
-};
-HomeComponent = __decorate([
-    core_1.Component({
-        selector: 'home',
-        template: `
-        <h1>Home</h1>
-        <p>Hello you !</p>
-    `
-    }),
-    __metadata("design:paramtypes", [])
-], HomeComponent);
+    };
+    HomeComponent = __decorate([
+        core_1.Component({
+            selector: 'home',
+            template: "\n        <h1>Home</h1>\n        <p>Hello you !</p>\n        <ul>\n        <li *ngFor=\"let m of messages\">m</li>\n        </ul>\n        <button (click)=\"sendMessage\">Send!</button>\n    "
+        }),
+        __metadata("design:paramtypes", [])
+    ], HomeComponent);
+    return HomeComponent;
+}());
 exports.HomeComponent = HomeComponent;
 //# sourceMappingURL=home.component.js.map

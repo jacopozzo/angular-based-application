@@ -78,11 +78,35 @@ gulp.task("copy:app", function () {
         .pipe(gulp.dest(config.appDest));
 });
 
+gulp.task("copy:index", function () {
+    return gulp.src(config.index)
+        .pipe(gulp.dest(config.appDest));
+});
+
 gulp.task("copy:jasmine", function () {
     return gulp.src(config.jasminejs,
         { base: config.node_modules + "jasmine-core/lib" })
         .pipe(gulp.dest(config.lib));
 });
+
+gulp.task("copy:es6-shim", function () {
+    return gulp.src(config.shim_es6,
+        { base: config.node_modules + "es6-shim" })
+        .pipe(gulp.dest(config.lib+"es6-shim"));
+});
+
+//gulp.task("copy:signalr", function () {
+//    return gulp.src(config.signalr,
+//        { base: config.node_modules + "@aspnet" })
+//        .pipe(gulp.dest(config.lib + "signalr"));
+//});
+
+//gulp.task("copy:plugin_babel", function () {
+//    return gulp.src(config.plugin_babel,
+//        { base: config.node_modules + "systemjs-plugin-babel" })
+//        .pipe(gulp.dest(config.lib + "systemjs-plugin-babel"));
+//});
+
 
 gulp.task("dependencies", [
     "copy:angular",
@@ -93,7 +117,11 @@ gulp.task("dependencies", [
     "copy:systemjs",
     "copy:rxjs",
     "copy:jasmine",
-    "copy:app"
+    "copy:app",
+    "copy:es6-shim",
+    "copy:index"
+    //"copy:@signalr",
+    //"copy:plugin_babel"
 ]);
 
 gulp.task("watch", function () {

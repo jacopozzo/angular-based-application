@@ -6,22 +6,25 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const core_1 = require("@angular/core");
-const router_1 = require("@angular/router");
-const home_component_1 = require("./home/home.component");
-const about_component_1 = require("./about/about.component");
+var core_1 = require("@angular/core");
+var router_1 = require("@angular/router");
+var home_component_1 = require("./home/home.component");
+var about_component_1 = require("./about/about.component");
 exports.routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: 'home', component: home_component_1.HomeComponent },
     { path: 'about', component: about_component_1.AboutComponent }
 ];
-let AppRoutingModule = class AppRoutingModule {
-};
-AppRoutingModule = __decorate([
-    core_1.NgModule({
-        imports: [router_1.RouterModule.forRoot(exports.routes)],
-        exports: [router_1.RouterModule]
-    })
-], AppRoutingModule);
+var AppRoutingModule = (function () {
+    function AppRoutingModule() {
+    }
+    AppRoutingModule = __decorate([
+        core_1.NgModule({
+            imports: [router_1.RouterModule.forRoot(exports.routes, { useHash: true })],
+            exports: [router_1.RouterModule]
+        })
+    ], AppRoutingModule);
+    return AppRoutingModule;
+}());
 exports.AppRoutingModule = AppRoutingModule;
 //# sourceMappingURL=app-routing.module.js.map

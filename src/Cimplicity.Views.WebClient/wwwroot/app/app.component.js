@@ -9,32 +9,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const core_1 = require("@angular/core");
-let AppComponent = class AppComponent {
-    constructor() {
+var core_1 = require("@angular/core");
+var AppComponent = (function () {
+    function AppComponent() {
         console.log('AppComponent -> constructor');
     }
-    ngOnInit() {
+    AppComponent.prototype.ngOnInit = function () {
         console.log('AppComponent -> ngOnInit');
-    }
-};
-AppComponent = __decorate([
-    core_1.Component({
-        selector: 'my-app',
-        template: `
-        <div class="container">
-            <h1>Angular 2 & TypeScript web application</h1>
-            <h2>Mad  e with ASP.NET Core and Visual Studio 2017</h2>
-            <nav>
-                <a routerLink="home" routerLinkActive="active">Home</a>
-                <a routerLink="about">About</a>
-            </nav>
-            <router-outlet></router-outlet>
-        </div>
-    `,
-        providers: []
-    }),
-    __metadata("design:paramtypes", [])
-], AppComponent);
+    };
+    AppComponent = __decorate([
+        core_1.Component({
+            selector: 'my-app',
+            template: "\n        <div class=\"container\">\n            <h1>Angular 2 & TypeScript web application</h1>\n            <h2>Mad  e with ASP.NET Core and Visual Studio 2017</h2>\n            <nav>\n                <a routerLink=\"home\" routerLinkActive=\"active\">Home</a>\n                <a routerLink=\"about\">About</a>\n            </nav>\n            <router-outlet></router-outlet>\n        </div>\n    ",
+            providers: []
+        }),
+        __metadata("design:paramtypes", [])
+    ], AppComponent);
+    return AppComponent;
+}());
 exports.AppComponent = AppComponent;
 //# sourceMappingURL=app.component.js.map

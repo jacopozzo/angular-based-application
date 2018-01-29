@@ -9,21 +9,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const core_1 = require("@angular/core");
-let AboutComponent = class AboutComponent {
-    constructor() {
+var core_1 = require("@angular/core");
+var AboutComponent = (function () {
+    function AboutComponent() {
         console.log('AboutComponent -> constructor');
     }
-    ngOnInit() {
+    AboutComponent.prototype.ngOnInit = function () {
         console.log('AboutComponent -> ngOnInit');
-    }
-};
-AboutComponent = __decorate([
-    core_1.Component({
-        selector: 'about',
-        templateUrl: 'app/about/about.html'
-    }),
-    __metadata("design:paramtypes", [])
-], AboutComponent);
+    };
+    AboutComponent = __decorate([
+        core_1.Component({
+            selector: 'about',
+            templateUrl: 'app/about/about.html'
+        }),
+        __metadata("design:paramtypes", [])
+    ], AboutComponent);
+    return AboutComponent;
+}());
 exports.AboutComponent = AboutComponent;
 //# sourceMappingURL=about.component.js.map

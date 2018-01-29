@@ -3,6 +3,7 @@
         paths: {
             'npm:': 'lib/'
         },
+        //transpiler: 'plugin-babel',
         map: {
             app: 'app',
             '@angular/core': 'npm:@angular/core/bundles/core.umd.js',
@@ -13,8 +14,11 @@
             '@angular/http': 'npm:@angular/http/bundles/http.umd.js',
             '@angular/router': 'npm:@angular/router/bundles/router.umd.js',
             '@angular/forms': 'npm:@angular/forms/bundles/forms.umd.js',
+            //'@aspnet/signalr-client':'npm:signalr/signalr-client/dist/src/index.d.ts',
             'rxjs': 'npm:rxjs',
             'angular-in-memory-web-api': 'npm:angular-in-memory-web-api/bundles/in-memory-web-api.umd.js'
+            //'plugin-babel': 'npm:systemjs-plugin-babel/plugin-babel.js',
+            //'systemjs-babel-build': 'npm:systemjs-plugin-babel/systemjs-babel-browser.js'
         },
         packages: {
             app: {

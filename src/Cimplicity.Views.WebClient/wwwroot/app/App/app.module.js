@@ -6,30 +6,33 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const core_1 = require("@angular/core");
-const platform_browser_1 = require("@angular/platform-browser");
-const http_1 = require("@angular/http");
-const app_routing_module_1 = require("./app-routing.module");
-const app_component_1 = require("./app.component");
-const home_component_1 = require("./home/home.component");
-const about_component_1 = require("./about/about.component");
-let AppModule = class AppModule {
-};
-AppModule = __decorate([
-    core_1.NgModule({
-        imports: [
-            platform_browser_1.BrowserModule,
-            http_1.HttpModule,
-            app_routing_module_1.AppRoutingModule
-        ],
-        declarations: [
-            app_component_1.AppComponent,
-            home_component_1.HomeComponent,
-            about_component_1.AboutComponent
-        ],
-        bootstrap: [app_component_1.AppComponent],
-        providers: []
-    })
-], AppModule);
+var core_1 = require("@angular/core");
+var platform_browser_1 = require("@angular/platform-browser");
+var http_1 = require("@angular/http");
+var app_routing_module_1 = require("./app-routing.module");
+var app_component_1 = require("./app.component");
+var home_component_1 = require("./home/home.component");
+var about_component_1 = require("./about/about.component");
+var AppModule = (function () {
+    function AppModule() {
+    }
+    AppModule = __decorate([
+        core_1.NgModule({
+            imports: [
+                platform_browser_1.BrowserModule,
+                http_1.HttpModule,
+                app_routing_module_1.AppRoutingModule
+            ],
+            declarations: [
+                app_component_1.AppComponent,
+                home_component_1.HomeComponent,
+                about_component_1.AboutComponent
+            ],
+            bootstrap: [app_component_1.AppComponent],
+            providers: []
+        })
+    ], AppModule);
+    return AppModule;
+}());
 exports.AppModule = AppModule;
 //# sourceMappingURL=app.module.js.map

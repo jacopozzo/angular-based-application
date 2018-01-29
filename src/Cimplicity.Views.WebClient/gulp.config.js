@@ -24,7 +24,11 @@
         reflectjs: base.node_modules + "reflect-metadata/Reflect*.js",
         systemjs: base.node_modules + "systemjs/dist/*.js",
         rxjs: base.node_modules + "rxjs/**/*.js",
-        jasminejs: base.node_modules + "jasmine-core/lib/jasmine-core/*.*"
+        jasminejs: base.node_modules + "jasmine-core/lib/jasmine-core/*.*",
+        shim_es6: base.node_modules + "es6-shim/es6*.*",
+        signalr: base.node_modules + "@aspnet/signalr-client/dist/*/*.*",
+        plugin_babel: base.node_modules + "systemjs-plugin-babel/*.js",
+        index:"Views/Home/Index.cshtml"
     };
 
     return config;

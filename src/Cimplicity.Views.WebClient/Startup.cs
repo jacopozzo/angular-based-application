@@ -4,8 +4,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Serialization;
+using System.IO;
 
-namespace Cimplicity.Views.WebClient
+namespace test
 {
     public class Startup
     {
@@ -18,6 +19,7 @@ namespace Cimplicity.Views.WebClient
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
                 .AddEnvironmentVariables();
+
             Configuration = builder.Build();
         }
 
@@ -29,6 +31,8 @@ namespace Cimplicity.Views.WebClient
                          .AddMvc()
                          .AddJsonOptions(options => options.SerializerSettings.ContractResolver =
                              new DefaultContractResolver());
+
+            //services.AddSignalR();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -42,14 +46,34 @@ namespace Cimplicity.Views.WebClient
                     .AllowAnyHeader()
                     .AllowAnyMethod()
                     .AllowCredentials())
+                    .UseDefaultFiles()
                 .UseStaticFiles();
 
-            app.UseMvc(routes =>
+            //app.UseMvc(routes =>
+            //{
+            //    routes.MapRoute(
+            //        name: "default",
+            //        template: "{controller=Home}/{action=Index}/{id?}");
+            //});
+
+            app.Use(async (context, next) =>
+        {
+            await next();
+
+            if (context.Response.StatusCode == 404
+                && !Path.HasExtension(context.Request.Path.Value))
             {
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
-            });
+                context.Request.Path = "/index.html";
+                await next();
+            }
+        });
+
+            app.UseMvc();
+
+            //app.UseSignalR(cfg =>
+            //{
+            //    cfg.MapHub<TestHub>("testHub");
+            //});
         }
     }
 }

@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es6",
+    "target": "es5",
     "module": "commonjs",
     "moduleResolution": "node",
     "sourceMap": true,
@@ -9,9 +9,8 @@
     "removeComments": true,
     "suppressImplicitAnyIndexErrors": true,
     "rootDir": "App",
-    
-    "outDir": "wwwroot/app"
-    
+    "outDir": "wwwroot/app",
+      "lib": ["dom","es6"]
   },
   "compileOnSave": true,
   "angularCompilerOptions": {
@@ -20,8 +19,7 @@
   },
   "exclude": [
     "node_modules",
-    "wwwroot",
-    "obj",
-    "bin"
+    "wwwroot"
   ]
+
 }
