@@ -3,4 +3,5 @@ bin/
 obj/
 node_modules/
 packages/
-src/Cimplicity.Views.WebClient/wwwroot/lib/
+src/Cimplicity.Views.WebClient/wwwroot/lib/*
+src/Cimplicity.Views.WebClient/wwwroot/app/*
