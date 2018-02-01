@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.2010
+VisualStudioVersion = 15.0.27130.2026
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "00 Utils", "00 Utils", "{256AFEB3-FFDA-4831-937E-F55AD9BAAD6B}"
 EndProject
@@ -33,7 +33,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cimplicity.Views.Tests", "C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utils.Data.DatabaseClient", "Utils.Data.DatabaseClient\Utils.Data.DatabaseClient.csproj", "{DFA99E27-A267-4D1E-962F-47B7CD9973AF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cimplicity.Views.WebClient", "Cimplicity.Views.WebClient\Cimplicity.Views.WebClient.csproj", "{91CA6390-6B50-4A6B-ABEC-DC9D9732A083}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cimplicity.Views.WebClient", "Cimplicity.Views.WebClient\Cimplicity.Views.WebClient.csproj", "{91CA6390-6B50-4A6B-ABEC-DC9D9732A083}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "00 nuget", "00 nuget", "{9D920EE6-E693-4484-BE00-F84BBEAE4616}"
+	ProjectSection(SolutionItems) = preProject
+		Cimplicity.Views.WebClient\app\index.html = Cimplicity.Views.WebClient\app\index.html
+		NuGet.config = NuGet.config
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

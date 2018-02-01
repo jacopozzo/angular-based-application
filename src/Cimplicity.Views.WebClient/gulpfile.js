@@ -103,7 +103,7 @@ gulp.task("copy:app", ["publish-app-wwwroot:js"], function () {
 
 gulp.task("copy:index", function () {
     return gulp.src(config.index)
-        .pipe(gulp.dest(config.appDest));
+        .pipe(gulp.dest(config.indexDest));
 });
 
 gulp.task("copy:jasmine", function () {

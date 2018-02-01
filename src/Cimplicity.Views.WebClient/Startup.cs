@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using Cimplicity.Views.WebClient.Hubs;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -27,6 +28,8 @@ namespace test
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSignalR();
+
             services
                          .AddMvc()
                          .AddJsonOptions(options => options.SerializerSettings.ContractResolver =
@@ -38,6 +41,11 @@ namespace test
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
+            app.UseSignalR(cfg =>
+            {
+                cfg.MapHub<TestHub>("/chat");
+            });
+
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
@@ -48,13 +56,6 @@ namespace test
                     .AllowCredentials())
                     .UseDefaultFiles()
                 .UseStaticFiles();
-
-            //app.UseMvc(routes =>
-            //{
-            //    routes.MapRoute(
-            //        name: "default",
-            //        template: "{controller=Home}/{action=Index}/{id?}");
-            //});
 
             app.Use(async (context, next) =>
         {
@@ -69,11 +70,6 @@ namespace test
         });
 
             app.UseMvc();
-
-            //app.UseSignalR(cfg =>
-            //{
-            //    cfg.MapHub<TestHub>("testHub");
-            //});
         }
     }
 }

@@ -10,17 +10,63 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
+var signalr_1 = require("@aspnet/signalr");
 var AppComponent = (function () {
     function AppComponent() {
+        var _this = this;
+        this.users = [];
+        this.messages = [];
+        this.message = "";
+        this.nick = "";
+        this.sendTo = "";
+        this.upMessage = function (nick, message, oneToOne) {
+            if (oneToOne === void 0) { oneToOne = false; }
+            nick = oneToOne ? nick + " sent to you" : nick;
+            var text = nick + ": " + message;
+            _this.messages.push(text);
+        };
         console.log('AppComponent -> constructor');
     }
     AppComponent.prototype.ngOnInit = function () {
-        console.log('AppComponent -> ngOnInit');
+        var _this = this;
+        this.nick = window.prompt("What's your nickname?", "J4C0x");
+        this.hubConnection = new signalr_1.HubConnection("/chat");
+        this.configureHubBehaviour();
+        this.hubConnection
+            .start()
+            .then(function () { console.log('Connection started!'); _this.connect(); alert("Connected!"); })
+            .catch(function (err) { console.log('Error while establishing connection ', err); alert("Unable to connect!"); });
+    };
+    AppComponent.prototype.connect = function () {
+        this.hubConnection.invoke("connect", this.nick).catch(function (err) { return console.error(err); });
+        ;
+    };
+    AppComponent.prototype.sendMessage = function () {
+        if (this.sendTo === "" || !this.sendTo || this.sendTo === "All")
+            this.hubConnection
+                .invoke('sendToAll', this.nick, this.message)
+                .catch(function (err) { return console.error(err); });
+        else
+            this.hubConnection.invoke('sendToClient', this.sendTo, this.message)
+                .catch(function (err) { return console.error(err); });
+    };
+    AppComponent.prototype.configureHubBehaviour = function () {
+        var _this = this;
+        this.hubConnection.on('sendToAll', function (nick, message) {
+            _this.upMessage(nick, message);
+        });
+        this.hubConnection.on('sendToClient', function (nick, message) {
+            _this.upMessage(nick, message, true);
+        });
+        this.hubConnection.on('getConnectedUsers', function (info) {
+            _this.users = info;
+        });
     };
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
-            template: "\n        <div class=\"container\">\n            <h1>Angular 2 & TypeScript web application</h1>\n            <h2>Mad  e with ASP.NET Core and Visual Studio 2017</h2>\n            <nav>\n                <a routerLink=\"home\" routerLinkActive=\"active\">Home</a>\n                <a routerLink=\"about\">About</a>\n            </nav>\n            <router-outlet></router-outlet>\n        </div>\n    ",
+            moduleId: module.id,
+            templateUrl: "app.component.html",
             providers: []
         }),
         __metadata("design:paramtypes", [])
@@ -28,4 +74,10 @@ var AppComponent = (function () {
     return AppComponent;
 }());
 exports.AppComponent = AppComponent;
+var ClientInfo = (function () {
+    function ClientInfo() {
+    }
+    return ClientInfo;
+}());
+exports.ClientInfo = ClientInfo;
 //# sourceMappingURL=app.component.js.map

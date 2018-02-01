@@ -1,0 +1,32 @@
+﻿<div id="main-container" style="text-align:center">
+    <h1>
+        SIGNALR!
+    </h1>
+    <div class="container" *ngIf="users && users.length">
+        <ul>
+            <li *ngFor="let u of users">{{u.nickname}} - {{u.connectionId}}</li>
+        </ul>
+    </div>
+    <div class="container">
+        <h2>Hello {{nick}}!</h2>
+        <form (ngSubmit)="sendMessage()" #chatForm="ngForm">
+            <div>
+                <label for="message">Message</label>
+                <input type="text" id="message" name="message" [(ngModel)]="message" required>
+                <select [disabled]="!users || !users.length" [(ngModel)]="sendTo" name="sendTo">
+                    <option value="All">All</option>
+                    <option *ngFor="let u of users">{{u.nickname}}</option> 
+                </select>
+            </div>
+            <button type="submit" id="sendmessage" [disabled]="!chatForm.valid">
+                Send
+            </button>
+        </form>
+    </div>
+    <div class="container" *ngIf="messages.length > 0">
+        <div *ngFor="let message of messages">
+            <span>{{message}}</span>
+        </div>
+    </div>
+
+</div>
