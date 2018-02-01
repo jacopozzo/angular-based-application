@@ -17,10 +17,13 @@
     "angular-in-memory-web-api": "~0.5.3",
     "bower": "1.8.2",
     "core-js": "^2.4.1",
+    "es5-shim": "^4.5.10",
     "es6-shim": "^0.35.3",
     "jquery": "^3.1.0",
+    "pump": "^2.0.1",
     "reflect-metadata": "^0.1.8",
     "rxjs": "5.5.6",
+    "systemjs-plugin-babel": "0.0.25",
     "systemjs": "0.20.19",
     "zone.js": "^0.8.20"
   },

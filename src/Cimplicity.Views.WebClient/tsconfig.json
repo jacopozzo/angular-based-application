@@ -8,9 +8,9 @@
     "experimentalDecorators": true,
     "removeComments": true,
     "suppressImplicitAnyIndexErrors": true,
-    "rootDir": "App",
-    "outDir": "wwwroot/app",
-      "lib": ["dom","es6"]
+    "rootDir": "app",
+    "outDir": "app",
+    "lib": [ "dom", "es6", "es5" ]
   },
   "compileOnSave": true,
   "angularCompilerOptions": {

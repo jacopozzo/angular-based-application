@@ -1,22 +1,45 @@
-﻿/// <binding Clean='clean' />
+﻿/// <binding Clean='clean' AfterBuild='copy:app'/>
 "use strict";
 
 var gulp = require('gulp');
 var config = require('./gulp.config')();
+var uglify = require('gulp-uglify');
+var concat = require('gulp-concat');
 var cleanCSS = require('gulp-clean-css');
 var clean = require('gulp-clean');
 var rename = require('gulp-rename');
+var pump = require('pump');
 var $ = require('gulp-load-plugins')({ lazy: true });
 
 gulp.task("clean:js", function (cb) {
-    //return $.rimraf('wwwroot/js/*.min.js', cb);
     return gulp.src('wwwroot/js/*.min.js', { read: false }).pipe(clean());
 });
 
 gulp.task("clean:css", function (cb) {
-    //return $.rimraf('wwwroot/css/*.min.css', cb);
     return gulp.src('wwwroot/css/*.min.css', { read: false }).pipe(clean());
 });
+
+gulp.task('publish-app-wwwroot:js', function (www) {
+    pump([
+        gulp.src("app/**/*.js"),
+        uglify(),
+        rename({ suffix: '.min' }),
+        gulp.dest(config.appDest)
+    ],
+        www)
+});
+
+//Valutare, eventualmente, di concatenare tutti i file js in uno solo e minimizzarlo
+//gulp.task('all-in-one', function (cb) {
+//    pump([
+//        gulp.src("app/**/*.js"),
+//        concat("all-in-one.js"),
+//        uglify(),
+//        rename({ suffix: '.min' }),
+//        gulp.dest(config.appDest + '/dist')
+//    ],
+//        cb)
+//});
 
 gulp.task('minify:css', function () {
     return gulp.src(config.css)
@@ -73,8 +96,8 @@ gulp.task("copy:rxjs", function () {
         .pipe(gulp.dest(config.lib));
 });
 
-gulp.task("copy:app", function () {
-    return gulp.src(config.app)
+gulp.task("copy:app", ["publish-app-wwwroot:js"], function () {
+    return gulp.src(config.appOther)
         .pipe(gulp.dest(config.appDest));
 });
 
@@ -92,20 +115,26 @@ gulp.task("copy:jasmine", function () {
 gulp.task("copy:es6-shim", function () {
     return gulp.src(config.shim_es6,
         { base: config.node_modules + "es6-shim" })
-        .pipe(gulp.dest(config.lib+"es6-shim"));
+        .pipe(gulp.dest(config.lib + "es6-shim"));
 });
 
-//gulp.task("copy:signalr", function () {
-//    return gulp.src(config.signalr,
-//        { base: config.node_modules + "@aspnet" })
-//        .pipe(gulp.dest(config.lib + "signalr"));
-//});
+gulp.task("copy:es5-shim", function () {
+    return gulp.src(config.shim_es5,
+        { base: config.node_modules + "es5-shim" })
+        .pipe(gulp.dest(config.lib + "es5-shim"));
+});
 
-//gulp.task("copy:plugin_babel", function () {
-//    return gulp.src(config.plugin_babel,
-//        { base: config.node_modules + "systemjs-plugin-babel" })
-//        .pipe(gulp.dest(config.lib + "systemjs-plugin-babel"));
-//});
+gulp.task("copy:signalr", function () {
+    return gulp.src(config.signalr,
+        { base: config.node_modules + "@aspnet" })
+        .pipe(gulp.dest(config.lib));
+});
+
+gulp.task("copy:plugin_babel", function () {
+    return gulp.src(config.plugin_babel,
+        { base: config.node_modules + "systemjs-plugin-babel" })
+        .pipe(gulp.dest(config.lib + "systemjs-plugin-babel"));
+});
 
 
 gulp.task("dependencies", [
@@ -119,9 +148,10 @@ gulp.task("dependencies", [
     "copy:jasmine",
     "copy:app",
     "copy:es6-shim",
-    "copy:index"
-    //"copy:@signalr",
-    //"copy:plugin_babel"
+    "copy:es5-shim",
+    "copy:index",
+    "copy:signalr",
+    "copy:plugin_babel"
 ]);
 
 gulp.task("watch", function () {
@@ -129,4 +159,4 @@ gulp.task("watch", function () {
         .pipe(gulp.dest(config.appDest));
 });
 
-gulp.task("default", ["clean", 'minify', "dependencies"]);
+gulp.task("default", ["clean", 'minify', "dependencies","copy:app"]);
