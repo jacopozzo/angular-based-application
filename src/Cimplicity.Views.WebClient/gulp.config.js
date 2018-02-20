@@ -31,6 +31,7 @@
         signalr: base.node_modules + "@aspnet/signalr/dist/*/*.*",
         plugin_babel: base.node_modules + "systemjs-plugin-babel/*.js",
         index: "index.html",
+        tslib: base.node_modules+ "tslib/**/*.js",
         indexDest: base.webroot
     };
 

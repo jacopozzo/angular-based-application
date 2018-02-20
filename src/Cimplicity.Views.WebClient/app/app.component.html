@@ -1,6 +1,6 @@
 ﻿<div id="main-container" style="text-align:center">
     <h1>
-        SIGNALR!
+        SIGNALR
     </h1>
     <div class="container" *ngIf="users && users.length">
         <ul>
@@ -15,10 +15,10 @@
                 <input type="text" id="message" name="message" [(ngModel)]="message" required>
                 <select [disabled]="!users || !users.length" [(ngModel)]="sendTo" name="sendTo">
                     <option value="All">All</option>
-                    <option *ngFor="let u of users">{{u.nickname}}</option> 
+                    <option *ngFor="let u of users">{{u.nickname}}</option>
                 </select>
             </div>
-            <button type="submit" id="sendmessage" [disabled]="!chatForm.valid">
+            <button mat-button type="submit" id="sendmessage" [disabled]="!chatForm.valid">
                 Send
             </button>
         </form>
@@ -28,5 +28,8 @@
             <span>{{message}}</span>
         </div>
     </div>
+    <button mat-button type="button">
+        TEST ME!
+    </button>
 
 </div>

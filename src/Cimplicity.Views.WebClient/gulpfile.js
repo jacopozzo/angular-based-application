@@ -54,6 +54,12 @@ gulp.task("copy:angular", function () {
         { base: config.node_modules + "@angular/" })
         .pipe(gulp.dest(config.lib + "@angular/"));
 });
+gulp.task("copy:tslib", function () {
+
+    return gulp.src(config.tslib,
+        { base: config.node_modules + "tslib/" })
+        .pipe(gulp.dest(config.lib + "tslib/"));
+});
 gulp.task("copy:angularWebApi", function () {
     return gulp.src(config.angularWebApi,
         { base: config.node_modules })
